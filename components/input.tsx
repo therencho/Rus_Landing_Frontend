@@ -5,7 +5,7 @@ import {
   IconMicrophone,
   IconPlayerRecordFilled,
 } from "@tabler/icons-react";
-import { APP_URL } from "@/lib/config";
+import { WAITLIST_URL } from "@/lib/config";
 
 /**
  * Landing version of the meeting workspace. This is presentational only — it
@@ -14,7 +14,7 @@ import { APP_URL } from "@/lib/config";
  */
 export default function MeetingWorkspace() {
   function goToApp() {
-    window.location.href = APP_URL;
+    window.location.href = WAITLIST_URL;
   }
 
   return (

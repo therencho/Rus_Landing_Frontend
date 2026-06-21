@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
 import ThemeToggle from "@/components/theme-toggle";
-import { APP_URL } from "@/lib/config";
+import { SIGN_IN_URL, WAITLIST_URL } from "@/lib/config";
 
 export function NavbarDemo() {
   const navItems = [
@@ -35,14 +35,16 @@ export function NavbarDemo() {
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
-          <div className="flex items-center gap-3">
+          {/* relative z-20 lifts this cluster above NavItems' `absolute inset-0`
+              overlay, which would otherwise intercept clicks on the toggle/buttons */}
+          <div className="relative z-20 flex items-center gap-3">
             <ThemeToggle />
-            <NavbarButton as="a" href={APP_URL} variant="secondary">
+            <NavbarButton as="a" href={SIGN_IN_URL} variant="secondary">
               Sign In
             </NavbarButton>
             <NavbarButton
               as="a"
-              href={APP_URL}
+              href={WAITLIST_URL}
               variant="primary"
               className="bg-accent text-accent-foreground hover:bg-accent-hover"
             >
@@ -81,7 +83,7 @@ export function NavbarDemo() {
             <div className="flex w-full flex-col gap-4">
               <NavbarButton
                 as="a"
-                href={APP_URL}
+                href={SIGN_IN_URL}
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="secondary"
                 className="w-full"
@@ -90,7 +92,7 @@ export function NavbarDemo() {
               </NavbarButton>
               <NavbarButton
                 as="a"
-                href={APP_URL}
+                href={WAITLIST_URL}
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
                 className="w-full bg-accent text-accent-foreground hover:bg-accent-hover"
