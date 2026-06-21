@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Class-based dark mode — toggled via a `.dark` class on <html>.
+   (Default Tailwind v4 dark: uses prefers-color-scheme; we override it
+   so the manual theme toggle works.) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ──────────────────────────────────────────────────────────────────────
+   Universal color tokens. Every component reads from these — no hardcoded
+   hex/`text-white` colors anywhere. Dark is the default theme; `.dark`
+   provides the dark palette, `:root` the light one.
+   ────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* surfaces */
+  --background:        #f4f5f8;
+  --surface:           #ffffff;
+  --surface-hover:     #e7eaf0;
+  --surface-input:     #f1f3f7;
+
+  /* borders */
+  --border:            rgba(15, 18, 25, 0.10);
+  --border-subtle:     rgba(15, 18, 25, 0.06);
+
+  /* text */
+  --fg:                #14171f;
+  --fg-muted:          #4b5563;
+  --fg-subtle:         #8a909c;
+
+  /* accent (primary action) */
+  --accent:            #475569;
+  --accent-hover:      #334155;
+  --accent-foreground: #ffffff;
+}
+
+.dark {
+  --background:        #0e1016;
+  --surface:           #141821;
+  --surface-hover:     #181d28;
+  --surface-input:     #19191c;
+
+  --border:            rgba(255, 255, 255, 0.10);
+  --border-subtle:     rgba(255, 255, 255, 0.05);
+
+  --fg:                #ffffff;
+  --fg-muted:          #9aa3b2;
+  --fg-subtle:         #6b7280;
+
+  --accent:            #334155;
+  --accent-hover:      #475569;
+  --accent-foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background:        var(--background);
+  --color-surface:           var(--surface);
+  --color-surface-hover:     var(--surface-hover);
+  --color-surface-input:     var(--surface-input);
+
+  --color-border:            var(--border);
+  --color-border-subtle:     var(--border-subtle);
+
+  --color-fg:                var(--fg);
+  --color-fg-muted:          var(--fg-muted);
+  --color-fg-subtle:         var(--fg-subtle);
+
+  --color-accent:            var(--accent);
+  --color-accent-hover:      var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--fg);
+  font-family: Arial, Helvetica, sans-serif;
+}
